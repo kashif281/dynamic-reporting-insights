@@ -1,0 +1,126 @@
+{
+  "entities": [
+    {
+      "name": "Widget",
+      "created_at": false,
+      "updated_at": false,
+      "fields": [
+        {
+          "name": "name",
+          "type": "varchar",
+          "nullable": false
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true
+        },
+        {
+          "name": "type",
+          "type": "varchar",
+          "nullable": false
+        },
+        {
+          "name": "data_insights",
+          "type": "json",
+          "nullable": true
+        },
+        {
+          "name": "kpi",
+          "type": "varchar",
+          "nullable": true
+        },
+        {
+          "name": "business_id",
+          "type": "integer",
+          "nullable": false
+        }
+      ],
+      "indexes": [
+        {
+          "fields": [
+            "business_id"
+          ],
+          "unique": false
+        }
+      ],
+      "uniques": []
+    },
+    {
+      "name": "Business",
+      "created_at": false,
+      "updated_at": false,
+      "fields": [
+        {
+          "name": "name",
+          "type": "varchar",
+          "nullable": false
+        },
+        {
+          "name": "industry",
+          "type": "varchar",
+          "nullable": true
+        },
+        {
+          "name": "location",
+          "type": "varchar",
+          "nullable": true
+        },
+        {
+          "name": "size",
+          "type": "varchar",
+          "nullable": true
+        }
+      ],
+      "indexes": [],
+      "uniques": []
+    },
+    {
+      "name": "KPI",
+      "created_at": false,
+      "updated_at": false,
+      "fields": [
+        {
+          "name": "name",
+          "type": "varchar",
+          "nullable": false
+        },
+        {
+          "name": "value",
+          "type": "varchar",
+          "nullable": true
+        },
+        {
+          "name": "widget_id",
+          "type": "integer",
+          "nullable": false
+        }
+      ],
+      "indexes": [
+        {
+          "fields": [
+            "widget_id"
+          ],
+          "unique": false
+        }
+      ],
+      "uniques": []
+    }
+  ],
+  "relationships": [
+    {
+      "from": "Widget",
+      "to": "Business",
+      "type": "ManyToOne"
+    },
+    {
+      "from": "KPI",
+      "to": "Widget",
+      "type": "ManyToOne"
+    }
+  ],
+  "_removedEntities": [],
+  "version": 2,
+  "rootFolder": "src",
+  "apiType": "Rest"
+}
